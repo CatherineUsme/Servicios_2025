@@ -66,6 +66,14 @@ namespace Servicios_jueves.Controllers
             return Empleado.Eliminar();
         }
 
+        [HttpDelete]
+        [Route("EliminarXDocumento")]
+        public string EliminarXDocumento(string Documento)
+        {
+            clsEmpleado Empleado = new clsEmpleado();
+            return Empleado.Eliminar(Documento);
+        }
+
 
 
     }

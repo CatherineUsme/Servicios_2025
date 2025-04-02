@@ -85,5 +85,27 @@ namespace Servicios_jueves.Clases
             }
 
         }
-	}
+
+        public string Eliminar(string Documento)
+        {
+            try
+            {
+                //antes de eliminar el elemento, se debe verificar que existe el empleado
+                EMPLeado empl = Consultar(Documento);
+                if (empl == null)
+                {
+                    return "El empleado con el documento ingresado no existe, no se puede eliminar";
+                }
+                dbSuper.EMPLeadoes.Remove(empl); //elimina el objeto que se busco, no el que se envia por parametros
+                dbSuper.SaveChanges(); //guardar los cambio en la base de datos
+                return ("Empleado eliminado con exito");
+
+            }
+            catch (Exception ex)
+            {
+                return "Error al eliminar el empleado: " + ex.Message;
+            }
+
+        }
+    }
 }

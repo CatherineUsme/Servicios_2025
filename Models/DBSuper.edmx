@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBSuperModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBSuperModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CARGo">
           <Key>
             <PropertyRef Name="Codigo" />
@@ -171,6 +171,7 @@
           <Property Name="Cantidad" Type="int" Nullable="false" />
           <Property Name="ValorUnitario" Type="int" Nullable="false" />
           <Property Name="CodigoTipoProducto" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="PRoductoPRoveedor">
           <Key>
@@ -728,8 +729,7 @@
             <End Role="PRoductoPRoveedor" EntitySet="PRoductoPRoveedor" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBSuperModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -936,6 +936,7 @@
           <NavigationProperty Name="DEtalleFacturaCompras" Relationship="Self.FK_DEtalleFacturaCompraucto" FromRole="PRODucto" ToRole="DEtalleFacturaCompra" />
           <NavigationProperty Name="TIpoPRoducto" Relationship="Self.FKProducto_TIpoPRoducto" FromRole="PRODucto" ToRole="TIpoPRoducto" />
           <NavigationProperty Name="PRoductoPRoveedors" Relationship="Self.FKProductoPRoveedoructo" FromRole="PRODucto" ToRole="PRoductoPRoveedor" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="PRoductoPRoveedor">
           <Key>
@@ -1691,6 +1692,7 @@
           <EntitySetMapping Name="PRODuctoes">
             <EntityTypeMapping TypeName="DBSuperModel.PRODucto">
               <MappingFragment StoreEntitySet="PRODucto">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
